@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% block right-panel-content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+                <img width="201px" height="320px" src="{{ book.imageurlm }}" class="img-fluid rounded mb-3 mb-md-0">
+            </div>
+            <div class="col-md-7">
+                <p>书名:{{ book.title }}</p>
+                <p>作者：{{ book.author }}</p>
+                <p>出版社：{{ book.publication }}</p>
+                <p>ISBN：{{ book.isbn }}</p>
+                <p>出版年份：{{ book.yearofpublication }}</p>
+                <p>评分：{{ book_rate }}</p>
+                <p>
+                    评分人数:{{ book.rate_set.count }}
+                </p>
+                <p>
+                    收藏人数:{{ book.collect.count }} ---{% if is_collect %}
+                    <a href="{% url 'decollect' book.id %}">取消收藏</a>{% else %}
+                    <a href="{% url 'collect' book.id %}">点击收藏</a>{% endif %}
+                </p>
+                {% if is_rate is not None %}
+                    <h5>您已经进行打分: {{ is_rate.mark }}</h5>
+                {% else %}
+
+                    <form action="{% url 'score' book.id %}" method="post">
+                        {% csrf_token %}
+                        <p>添加评分</p>
+                        <select name="score">
+                            <option>1.0</option>
+                            <option>2.0</option>
+                            <option>3.0</option>
+                            <option>4.0</option>
+                            <option>5.0</option>
+                        </select>
+                        <button type="submit" class="btn btn-outline-secondary">提交</button>
+                    </form>
+
+                {% endif %}
+
+                </ul>
+            </div>
+        </div>
+        <br>
+
+
+        <div class="row clearfix">
+            <p class="col-md-12 column">
+            <form class="form-control" fole="form" action="{% url 'comment' book.id %}" method="post">
+                {% csrf_token %}
+                <textarea placeholder="快来说点什么吧" style="margin: 10px" class="form-control" name="comment" cols="10" rows="9"></textarea>
+                <button  class="btn btn-primary" style="size: 200px;margin-top: 10px;float: right" type="submit" >提交评论</button>
+            </form>
+            <p>评论列表</p>
+            {% for i in comments %}
+
+                <div  class="container" style="width: 81rem;">
+
+                    <p class="text-start">
+                        {{ i.create_time }}
+                    <p class="text-start">
+                        {{ i.user.name }}: {{ i.content }}
+                    </p>
+
+                    </p>
+                </div>
+
+                <hr>
+
+            {% endfor %}
+              </div>
+
+    </div>
+
+
+
+{% endblock %}
+
+
+

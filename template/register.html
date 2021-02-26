@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    {% block head %} {% endblock %}
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>图书推荐系统</title>
+    <link rel="shortcut icon " type="images/x-icon" href="/static/icon/book.png">
+    <!-- Bootstrap Core CSS   bootstrap@5.0.0-->
+    <link href="/static/bootstrap-5.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/bootstrap-5.0.0/css/custom.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row center-block">
+        <div class="col-lg-5 col-xl-6 mx-auto">
+            <div class="card card-signin flex-row my-4">
+
+                <div class="card-body">
+                    <h5 class="card-title text-center">Register</h5>
+                    <form class="form-signin" action="{% url 'register' %}" method='post' autocomplete="on">
+
+                        {% csrf_token %}
+
+
+                        {% for field in form %}
+                            <div class="input-group-lg mb-3">
+                                {{ field.errors }}
+                            </div>
+                            <div class="input-group-lg mb-3">
+                                {{ field }}
+                            </div>
+                        {% endfor %}
+
+
+
+                        <div class="d-grid gap-2 col-sm-5 m-auto" style="margin-top: 20px">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
+                        </div>
+                        <a class="d-block text-center mt-2 small text-center" href="{% url 'login' %}">Sign In</a>
+                        <hr class="my-4">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

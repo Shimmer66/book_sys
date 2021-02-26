@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+    {% block head %} {% endblock %}
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>图书推荐系统</title>
+    <link rel="shortcut icon " type="images/x-icon" href="/static/icon/book.png">
+    <!-- Bootstrap Core CSS   bootstrap@5.0.0-->
+    <link href="/static/bootstrap-5.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/bootstrap-5.0.0/css/custom.css" rel="stylesheet">
+</head>
+
+<br>
+
+<!-- Navigation -->
+
+<nav class="navbar fixed-top  navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'hot_book' %}">最热书籍</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'latest_book' %}">最新书籍</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'personal' %}">个人中心</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'message_boards' 1 1 %}">论坛</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        算法
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{% url 'svd' %}">SVD</a>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{% url 'cold_boot' %}">冷启动</a>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{% url 'user_reco' %}">基于用户</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{% url 'week_reco' %}">基于物品</a>
+                    </ul>
+                </li>
+
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div style="margin-top: 100px;"></div>
+<!--页面专属内容-->
+
+{% block right-panel-content %} {% endblock %}
+
+
+<!-- Footer -->
+<br>
+<br>
+<footer class="navbar fixed-bottom " >
+    <div class="container">
+
+        <p class="text-muted small mb-0 m-auto">Copyright &copy; Book_Recommend 2021</p>
+    </div>
+</footer>
+
+
+<!-- jQuery 和 Bootstrap 集成包（集成了 Popper） -->
+<script src="/static/bootstrap-5.0.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

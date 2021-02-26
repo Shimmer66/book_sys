@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block right-panel-content %}
+
+    {% if request.session.login_in == True %}
+        <div class="container">
+
+            <div class="col-md-9">
+                <ul class="list-group">
+                    <li class="list-group-item"> 您好，{{ user.username }}！</li>
+
+                    <li class="list-group-item"><a href="{% url 'mycollect' %}">我的收藏</a></li>
+                    <li class="list-group-item"><a href="{% url 'my_comments' %}">我的评论</a></li>
+                    <li class="list-group-item"><a href="{% url 'my_rate' %}">我的评分</a></li>
+                    <li class="list-group-item"><a href="{% url 'myfoot' %}">我的足迹</a></li>
+                    <li class="list-group-item"><a href="{% url 'myinfo' %}">我的信息</a></li>
+                    <li class="list-group-item"><a class="js-scroll-trigger" href="{% url 'logout' %}">退出</a></li>
+                </ul>
+            </div>
+
+        </div>
+    {% endif %}
+{% endblock %}
+
+
+

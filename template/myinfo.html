@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block right-panel-content %}
+
+
+
+
+    <div class="container">
+
+        <div class="col-md-9">
+            <h4 class="text-start">个人信息：</h4>
+            <ul class="list-group">
+                <li class="list-group-item">姓名：{{ user.username }}</li>
+                <li class="list-group-item">邮箱： {{ user.email }}</li>
+                <li class="list-group-item">爱好：</li>
+
+            </ul>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+

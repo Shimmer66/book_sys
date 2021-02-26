@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block right-panel-content %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>书名</th>
+            <th>时间</th>
+            <th>查看</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in myfootprint %}
+            <tr>
+                <td>{{ i.bookname }}</td>
+                <td>{{ i.create_time }}</td>
+                <td><a href="{% url 'book' i.book_id %}"><p>查看</p></a></td>
+                {#                更改为软编码之后#}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
